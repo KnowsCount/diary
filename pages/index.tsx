@@ -35,6 +35,7 @@ const ModalEditor = styled.div`
 
 const ButtonsWrapper = styled.div`
   display: flex;
+  gap: 15px;
 `
 
 const ModalButton = styled.div``
@@ -51,7 +52,7 @@ const Home: NextPage = () => {
     setIsOpen(false)
     e.stopPropagation()
   }
-  const getStarterText = () => {
+  const getTitleText = () => {
     if (toggle == true) {
       let starterText: string = 'Dear diary, \n'
       return starterText
@@ -63,7 +64,7 @@ const Home: NextPage = () => {
   return (
     <Container>
       <Head>
-        <title>{getStarterText()}</title>
+        <title>{getTitleText()}</title>
         <meta name="description" content="a diary app for personal use" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -99,7 +100,7 @@ const Home: NextPage = () => {
           >
             <h1>{(new Date().toJSON().slice(0, 10))}</h1>
             <ModalEditor>
-              <Editor starterText={getStarterText()} />
+              <Editor starterText={'# ' + getTitleText()} />
             </ModalEditor>
             <ButtonsWrapper>
               <ModalButton onClick={closeModal}>
