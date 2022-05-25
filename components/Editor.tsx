@@ -1,18 +1,23 @@
-import "vditor/dist/index.css";
-import React from "react";
-import Vditor from "vditor";
+import "vditor/dist/index.css"
+import React from "react"
+import Vditor from "vditor"
 
-const Editor = () => {
+interface Props {
+  starterText: string
+}
+
+const Editor: React.FC<Props> = (props: Props) => {
+  let starterText = props.starterText
   const [vd, setVd] = React.useState<Vditor>()
   React.useEffect(() => {
     const vditor = new Vditor("vditor", {
       lang: 'en_US',
       after: () => {
-        vditor.setValue("what's happening?");
-        setVd(vditor);
+        vditor.setValue(starterText)
+        setVd(vditor)
       }
-    });
-  }, []);
+    })
+  }, [])
   return <div id="vditor" className="vditor" />
 }
 
